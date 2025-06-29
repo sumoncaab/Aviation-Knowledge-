@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <title>বিএমআই ক্যালকুলেটর</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>বিএমআই ক্যালকুলেটর</h1>
+  <label>উচ্চতা (সেন্টিমিটার): <input type="number" id="height"></label><br>
+  <label>ওজন (কেজি): <input type="number" id="weight"></label><br>
+  <button onclick="calculateBMI()">গণনা করুন</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      const weight = parseFloat(document.getElementById('weight').value);
+      const bmi = weight / (height * height);
+      let status = "";
+      if (bmi < 18.5) status = "কম ওজন";
+      else if (bmi < 25) status = "স্বাভাবিক ওজন";
+      else if (bmi < 30) status = "মোটা";
+      else status = "অতিরিক্ত মোটা";
+      document.getElementById('result').innerText = `আপনার BMI: ${bmi.toFixed(2)} (${status})`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body {
+  font-family: 'Siyam Rupali', sans-serif;
+  max-width: 700px;
+  margin: auto;
+  padding: 10px;
+  background: #f0f8ff;
+}
+header {
+  background: #004080;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+nav a {
+  margin-right: 15px;
+  color: white;
+  text-decoration: none;
+}
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+}
+button {
+  margin-top: 10px;
+}

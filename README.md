@@ -1,3 +1,2 @@
 # Aviation-Knowledge-
-Aviation Knowledge Blog 
-"+"upload file
+Aviation Knowledge Blog

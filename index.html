@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aviation Knowledge</title>
+  <style>
+    body {
+      font-family: 'SutonnyMJ', Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #0066cc;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover {
+      background-color: #004080;
+    }
+    main {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    .post {
+      background: white;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .post h2 {
+      margin-top: 0;
+      color: #004080;
+    }
+    small {
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 15px 10px;
+      background-color: #004080;
+      color: white;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input[type=number] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #004080;
+    }
+    #bmi-result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Aviation Knowledge</h1>
+  <p>বাংলা ব্লগ ও ছোট অ্যাপ</p>
+</header>
+<nav>
+  <a href="#home" onclick="showSection('home'); return false;">হোম</a>
+  <a href="#bmi-calculator" onclick="showSection('bmi-calculator'); return false;">বিএমআই ক্যালকুলেটর</a>
+</nav>
+<main>
+  <section id="home" class="section">
+    <article class="post">
+      <h2>প্রথম পোস্ট: Aviation বিষয়ক ভূমিকা</h2>
+      <p>এই ব্লগে আপনি পাবেন বিমান ও প্রযুক্তি সংক্রান্ত ছোট ছোট তথ্য ও কনটেন্ট।</p>
+      <small>লিখেছেন: Aviation Knowledge | ২৮ জুন, ২০২৫</small>
+    </article>
+    <article class="post">
+      <h2>দ্বিতীয় পোস্ট: BMI ক্যালকুলেটর ব্যবহারের গাইড</h2>
+      <p>নিচে দেয়া BMI ক্যালকুলেটর থেকে সহজেই আপনার স্বাস্থ্য মূল্যায়ন করতে পারবেন।</p>
+      <small>লিখেছেন: Aviation Knowledge | ২৮ জুন, ২০২৫</small>
+    </article>
+  </section>
+
+  <section id="bmi-calculator" class="section" style="display:none;">
+    <h3>বিএমআই ক্যালকুলেটর</h3>
+    <label for="weight">ওজন (কেজিতে):</label>
+    <input type="number" id="weight" min="1" />
+    <label for="height">উচ্চতা (সেমি):</label>
+    <input type="number" id="height" min="1" />
+    <button onclick="calculateBMI()">হিসাব করুন</button>
+    <div id="bmi-result"></div>
+  </section>
+</main>
+
+<footer>
+  &copy; ২০২৫ Aviation Knowledge
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('main .section').forEach(sec => sec.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function calculateBMI() {
+    const w = parseFloat(document.getElementById('weight').value);
+    const h = parseFloat(document.getElementById('height').value);
+    const res = document.getElementById('bmi-result');
+    if (!w || !h) {
+      res.textContent = 'সঠিক তথ্য দিন।';
+      res.style.color = 'red';
+      return;
+    }
+    const bmi = w / ((h / 100) * (h / 100));
+    let cat = bmi < 18.5 ? 'কম ওজন' :
+              bmi < 25 ? 'স্বাভাবিক ওজন' :
+              bmi < 30 ? 'অতিরিক্ত ওজন' :
+              'স্থূলতা';
+    res.style.color = 'green';
+    res.textContent = `আপনার বিএমআই: ${bmi.toFixed(2)} (${cat})`;
+  }
+
+  showSection('home');
+</script>
+</body>
+</html>
